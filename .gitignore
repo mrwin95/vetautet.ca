@@ -36,17 +36,15 @@ build/
 
 ### Mac OS ###
 .DS_Store!/application.iml
-/controller.iml
-/domain.iml
-/infrastructure.iml
-/start.iml
-/vetautet.ca.iml
-start/target/*
-/infrastructure/target/*
-/domain/target/
-/controller/target/
-/application/target/
-!/environments/
-!/.idea/
+controller.iml
+domain.iml
+infrastructure.iml
+start.iml
+vetautet.ca.iml
+infrastructure/target/
+domain/target/
+controller/target/
+application/target/
+environments/
 .idea/
 start/target/
