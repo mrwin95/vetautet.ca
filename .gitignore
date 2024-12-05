@@ -47,3 +47,5 @@ start/target/*
 /controller/target/
 /application/target/
 !/environments/
+!/.idea/
+.idea/
