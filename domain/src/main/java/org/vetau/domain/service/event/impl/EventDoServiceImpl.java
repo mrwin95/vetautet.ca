@@ -8,6 +8,7 @@ import org.vetau.domain.service.event.EventDoService;
 public class EventDoServiceImpl implements EventDoService {
 
     private final EventDoRepository eventDoRepository;
+
     public EventDoServiceImpl(EventDoRepository eventDoRepository){
         this.eventDoRepository = eventDoRepository;
     }
