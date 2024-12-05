@@ -1,20 +1,69 @@
 spring:
   application:
     name: StartApp
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+  jackson:
+    serialization:
+      indent-output: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: ""
+      lettuce:
+        pool:
+          enabled: true
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: -1ms
+      connect-timeout: 30000
 server:
   port: 8082
+  tomcat:
+    threads:
+      max: 200
 
-
-
-resilience4j.ratelimiter:
-  instances:
-    backendA:
-      limitForPeriod: 2
-      limitRefreshPeriod: 10s
-      timeoutDuration: 3s
-      registerHealthIndicator: true
-      eventConsumerBufferSize: 100
-    backendB:
-      limitForPeriod: 5
-      limitRefreshPeriod: 10s
-      timeoutDuration: 3s
+resilience4j:
+  circuitbreaker:
+    instances:
+      checkRandom:
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 60
+        minimum-number-of-calls: 5
+        eventConsumerBufferSize: 10
+        registerHealthIndicator: true
+  ratelimiter:
+    instances:
+      backendA:
+        limitForPeriod: 2
+        limitRefreshPeriod: 10s
+        timeoutDuration: 3s
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 100
+      backendB:
+        limitForPeriod: 5
+        limitRefreshPeriod: 10s
+        timeoutDuration: 3s
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"
+  endpoint:
+    health:
+      show-details: always
