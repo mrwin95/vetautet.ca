@@ -3,3 +3,18 @@ spring:
     name: StartApp
 server:
   port: 8082
+
+
+
+resilience4j.ratelimiter:
+  instances:
+    backendA:
+      limitForPeriod: 2
+      limitRefreshPeriod: 10s
+      timeoutDuration: 3s
+      registerHealthIndicator: true
+      eventConsumerBufferSize: 100
+    backendB:
+      limitForPeriod: 5
+      limitRefreshPeriod: 10s
+      timeoutDuration: 3s
