@@ -49,3 +49,4 @@ start/target/*
 !/environments/
 !/.idea/
 .idea/
+start/target/
