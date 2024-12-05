@@ -36,6 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store!/application.iml
+.DS_Store!/controller.iml
 controller.iml
 domain.iml
 infrastructure.iml
