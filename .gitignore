@@ -46,3 +46,4 @@ start/target/*
 /domain/target/
 /controller/target/
 /application/target/
+!/environments/
